@@ -6,6 +6,7 @@ require('dotenv').config({
 })
 
 //Funcion para conectar a la base de datos.
+require('dotenv').config()
 const conectarDB = async () => {
     try {
         const conn = await mongoose.createConnection(process.env.DB_URL).asPromise();
