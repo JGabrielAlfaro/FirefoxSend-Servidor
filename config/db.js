@@ -9,8 +9,10 @@ require('dotenv').config({
 require('dotenv').config()
 const conectarDB = async () => {
     try {
-        const conn = await mongoose.createConnection(process.env.DB_URL).asPromise();
-        console.log("DB conectada ok",conn.readyState );
+        await mongoose.connect(process.env.DB_URL,{
+            serverSelectionTimeoutMS: 30000,
+        })
+        console.log("DB conectada ok");
     } catch (error) {
         console.log("Se presento un error");
         console.log(error);
