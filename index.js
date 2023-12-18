@@ -1,6 +1,7 @@
 const express = require('express');
 const conectarDB = require('./config/db');
 
+
 //Crear el servidor
 const app = express();
 
@@ -16,7 +17,7 @@ app.use( express.json() );
 
 //Rutas de la app
 app.use('/api/usuarios', require('./routes/usuarios'))
-
+app.use('/api/auth', require('./routes/auth'))
 
 //Arrancar la aplicaciónn
 app.listen(port,'0.0.0.0',()=>{
