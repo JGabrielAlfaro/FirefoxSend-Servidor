@@ -15,9 +15,10 @@ const port  = process.env.PORT || 4000;
 //Habilitar leer los valores de un body
 app.use( express.json() );
 
-//Rutas de la app
+//Rutas de la app (endpoint y archivo de ruta)
 app.use('/api/usuarios', require('./routes/usuarios'))
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/enlaces', require('./routes/enlaces'))
 
 //Arrancar la aplicaciónn
 app.listen(port,'0.0.0.0',()=>{
