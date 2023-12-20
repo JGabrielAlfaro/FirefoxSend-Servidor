@@ -38,7 +38,8 @@ exports.subirArchivo = async (req, res, next) => {
 exports.eliminarArchivo = async (req, res) => {
     console.log("Nombre de archivo: ", req.archivo)
     try {
-         fs.unlinkSync(__dirname + `/../uploads/${req.archivo}`)
+        //  fs.unlinkSync(__dirname + `/../uploads/${req.archivo}`)
+         fs.unlinkSync(`uploads/${req.archivo}`)
         console.log(!"Ruta del archivo eliminado:", `${__dirname} + /../uploads/${req.archivo}`)
     } catch (error) {
         console.log("Error al eliminar el archivo")
