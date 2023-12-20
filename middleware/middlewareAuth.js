@@ -15,14 +15,15 @@ module.exports = (req,res,next) => {
             // res.json({usuario})
             
             req.usuario = usuario; //inyectamos la salida generada json del id,nombre, email, iat,exp
-            
+            return next(); // Vaya al siguiente Middleware
         } catch (error) {
             // console.log(error)
-            console.log("JWT no valido")
+            // console.log("JWT no valido")
+            res.status(401).json({msg:"JWT no valido"})
         }
        
     }
 
-    return next(); // Vaya al siguiente Middleware
+   
 }
 
