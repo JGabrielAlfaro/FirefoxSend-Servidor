@@ -1,5 +1,7 @@
 const express = require("express");
 const conectarDB = require("./config/db");
+const cors = require('cors')
+
 
 //Crear el servidor
 const app = express();
@@ -7,6 +9,18 @@ const app = express();
 //Conectar a la base de datos.
 conectarDB();
 console.log("Comenzando Node Send");
+
+//Habilitar cors
+const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost/2000'];
+
+const opcionesCors = {
+  origin: allowedOrigins,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}
+console.log(opcionesCors)
+
+app.use(cors(opcionesCors))
 
 //Puerto de la app
 const port = process.env.PORT || 4000;
