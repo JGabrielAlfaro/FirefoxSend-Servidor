@@ -63,21 +63,19 @@ exports.obtenerEnlance = async (req, res, next) => {
   //Si el enlace existe
   res.json({archivo: enlace.nombre });
 
-  //si las descargas son igual a 1 - Borrar la entrada y borrar el archivo.
-  const { descargas,nombre } = enlace;
-  if (descargas === 1) {
-    //Eliminar el archivo
-    req.archivo = nombre;
+  next();
 
-    //Eliminar la entrada de la BD
-     await Enlaces.findOneAndDelete(req.params.url)
-    console.log("Eliminando:", req.params.url)
-
-    next(); //se va al siguiente controlador
-
-  } else {
-    //Si las descargas son mayores a uno, restar uno.
-    enlace.descargas--;
-    await enlace.save();
-  }
+  
 };
+
+//Obtener un listado de todos los enlaces.
+exports.todosEnlaces = async (req, res) => {
+
+  try {
+    const enlaces = await Enlaces.find({}).select('url -_id');
+    res.json({enlaces})
+  } catch (error) {
+    console.log(error)
+  }
+
+}

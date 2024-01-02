@@ -15,9 +15,14 @@ router.post(
   enlacesController.nuevoEnlace
 );
 
+//Generando los enlaces staticos.
+router.get("/",
+  enlacesController.todosEnlaces
+)
+
 router.get('/:url',
   enlacesController.obtenerEnlance,
-  archivosController.eliminarArchivo
+  // archivosController.eliminarArchivo
 );
 
 module.exports = router;
