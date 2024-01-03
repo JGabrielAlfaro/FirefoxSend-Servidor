@@ -11,6 +11,9 @@ variables.env
 # testing
 /coverage
 
+#Up | down
+/uploads
+
 # next.js
 /.next/
 /out/
